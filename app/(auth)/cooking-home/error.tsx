@@ -9,7 +9,7 @@ function ErrorPage() {
         className="rounded-md"
         width={600}
         height={600}
-        alt="Si è veritificato un error"
+        alt="Si è verificato un error"
       />
     </div>
   );

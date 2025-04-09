@@ -39,7 +39,7 @@ export default function AuthForm() {
       <div className="w-[50%] mx-auto flex shadow-2xl justify-center flex-col gap-5 bg-gray-50 rounded-md p-6 min-h-[400px]">
         <p className="text-center mb-3">Login in Cooking Delight App</p>
 
-        <form.AppField name="username">
+        <form.AppField name="identifier">
           {(field) => (
             <>
               <Label htmlFor={field.name}>Email:</Label>

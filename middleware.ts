@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { User } from "./models/User.model";
+import { AuthInfo } from "./models/User.model";
 import { decrypt } from "./lib/auth";
 
 const protectedRoutes = ["/cooking-home"];
@@ -14,9 +14,9 @@ export default async function middleware(req: NextRequest) {
 
   if (!cookie) return NextResponse.redirect(new URL("/", req.nextUrl));
 
-  const session = await decrypt<User>(cookie);
+  const session = await decrypt<AuthInfo>(cookie);
 
-  if (isProtectedRoute && !session.id) {
+  if (isProtectedRoute && !session?.user) {
     return NextResponse.redirect(new URL("/", req.nextUrl));
   }
 

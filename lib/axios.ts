@@ -1,29 +1,26 @@
-import { User } from "@/models/User.model";
+import { AuthInfo } from "@/models/User.model";
 import axios from "axios";
 import { cookies } from "next/headers";
 import { decrypt } from "./auth";
 
 const axiosInstance = axios.create({
   withCredentials: true,
-  baseURL: "https://dummyjson.com/",
+  baseURL: process.env.CMS_API_STRAPI_URL,
   timeout: 1000,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-/**
- * This interceptors add
- * the accessToken to the header
- */
-axiosInstance.interceptors.request.use(async (config) => {
+async function getCookieAuthorizationToken(): Promise<string> {
   const cookie = (await cookies()).get("session")?.value;
-  let session: null | User = null;
-  if (cookie) session = await decrypt<User>(cookie);
+  let session: null | AuthInfo = null;
+  if (cookie) session = await decrypt<AuthInfo>(cookie);
 
   if (session) {
-    config.headers["Authorization"] = `Bearer ${session.accessToken}`;
+    return session.jwt;
   }
-  return config;
-});
-export { axiosInstance };
+  throw new Error("Unable to find Authorization cookie");
+}
+
+export { axiosInstance, getCookieAuthorizationToken };

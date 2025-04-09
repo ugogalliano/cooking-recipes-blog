@@ -1,17 +1,17 @@
 "use server";
 
-import { UserSchema, User } from "@/components/auth/shared-auth-form";
+import { UserSchema, UserForm } from "@/components/auth/shared-auth-form";
 import { axiosInstance } from "../lib/axios";
-import { User as UserModel } from "@/models/User.model";
+import { AuthInfo } from "@/models/User.model";
 import { encrypt } from "@/lib/auth";
 import { cookies } from "next/headers";
 import { ActionsApiResponse } from "@/models/ActionsApiResponse.model";
 
 export async function login(
-  formData: User
-): Promise<ActionsApiResponse<UserModel>> {
+  formData: UserForm
+): Promise<ActionsApiResponse<AuthInfo>> {
   const validatedFields = UserSchema.safeParse(formData);
-  const actionsResponse: ActionsApiResponse<UserModel> = {
+  const actionsResponse: ActionsApiResponse<AuthInfo> = {
     success: true,
     message: "",
   };
@@ -23,14 +23,18 @@ export async function login(
   }
 
   try {
-    const response = await axiosInstance.post<UserModel>("/auth/login", {
+    const response = await axiosInstance.post<AuthInfo>("/auth/local", {
       ...formData,
-      expiresInMins: 30,
     });
     const user = response.data;
 
     const expires = new Date();
-    expires.setMinutes(expires.getMinutes() + 30);
+
+    // Aggiungi 29 giorni
+    expires.setDate(expires.getDate() + 29);
+
+    // Aggiungi 23 ore
+    expires.setHours(expires.getHours() + 23);
 
     const session = await encrypt(user, expires);
 

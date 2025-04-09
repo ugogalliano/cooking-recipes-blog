@@ -7,10 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import {
-  useAppForm,
-  useFieldContext,
-} from "../tanstack-form-setup/tanstack-form-setup";
+import { useAppForm } from "../tanstack-form-setup/tanstack-form-setup";
 
 interface ModalArrayTableProps {
   children: React.ReactNode;
@@ -42,7 +39,7 @@ export default function ModalArrayTable(props: ModalArrayTableProps) {
             form.handleSubmit();
           }}
         >
-          test
+          {props.children}
           <div className="mt-4 flex justify-end space-x-2">
             <Button variant="secondary" type="submit">
               Cancel

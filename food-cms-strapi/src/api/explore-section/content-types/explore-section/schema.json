@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "explore_sections",
+  "info": {
+    "singularName": "explore-section",
+    "pluralName": "explore-sections",
+    "displayName": "ExploreSection",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "exploreItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "explore.explore-item"
+    }
+  }
+}
