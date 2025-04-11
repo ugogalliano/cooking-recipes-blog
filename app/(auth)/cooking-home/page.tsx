@@ -3,10 +3,12 @@ import {
   getExploreSection,
   getFeatureSection,
   getHeroSection,
+  getRecipesSection,
 } from "@/services/home";
-import { getCookieAuthorizationToken } from "@/lib/axios";
+import { getCookieAuthorizationToken } from "@/lib/auth";
 import ExploreSection from "@/components/cooking-home/ExploreSection";
 import FeatureSection from "@/components/cooking-home/FeatureSection";
+import RecipesSection from "@/components/cooking-home/RecipesSection";
 
 export default async function CookingHome() {
   const token = await getCookieAuthorizationToken();
@@ -17,6 +19,8 @@ export default async function CookingHome() {
 
   const featureSection = await getFeatureSection();
 
+  const recipesSection = await getRecipesSection(token);
+
   return (
     <>
       <HeroSection {...heroSection} />
@@ -24,6 +28,8 @@ export default async function CookingHome() {
       <ExploreSection {...exploreSection} />
 
       <FeatureSection {...featureSection} />
+
+      <RecipesSection {...recipesSection} />
     </>
   );
 }
