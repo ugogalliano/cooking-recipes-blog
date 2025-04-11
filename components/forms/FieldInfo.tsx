@@ -1,8 +1,6 @@
 import { AnyFieldApi } from "@tanstack/react-form";
 
 function FieldInfo({ field }: Readonly<{ field: AnyFieldApi }>) {
-  console.log(field.state.meta.errors);
-
   const messages =
     field.state.meta.errors.length &&
     (field.state.meta.errors.map((error) => error.message) as string[]);

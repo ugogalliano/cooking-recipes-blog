@@ -41,6 +41,12 @@
         "medium prep",
         "hard prep"
       ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "recipes"
     }
   }
 }
