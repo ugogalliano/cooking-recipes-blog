@@ -16,6 +16,7 @@ export default function HeroSection({
           alt={image.alternativeText}
           width={image.width}
           height={image.height}
+          priority
           className="mx-auto rounded-md"
         />
       )}

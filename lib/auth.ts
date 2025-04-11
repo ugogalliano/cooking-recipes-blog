@@ -1,3 +1,4 @@
+import { AuthInfo } from "@/models/User.model";
 import { jwtVerify, SignJWT } from "jose";
 import { cookies } from "next/headers";
 
@@ -32,4 +33,15 @@ export async function isAuthenticated<T>(): Promise<T | null> {
     console.error("Error decrypting session:", error);
     return null;
   }
+}
+
+export async function getCookieAuthorizationToken(): Promise<string> {
+  const cookie = (await cookies()).get("session")?.value;
+  let session: null | AuthInfo = null;
+  if (cookie) session = await decrypt<AuthInfo>(cookie);
+
+  if (session) {
+    return session.jwt;
+  }
+  throw new Error("Unable to find Authorization cookie");
 }

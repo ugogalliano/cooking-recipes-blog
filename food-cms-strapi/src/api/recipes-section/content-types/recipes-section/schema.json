@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "recipes_sections",
+  "info": {
+    "singularName": "recipes-section",
+    "pluralName": "recipes-sections",
+    "displayName": "RecipesSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    }
+  }
+}
