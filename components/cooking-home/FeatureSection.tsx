@@ -19,13 +19,13 @@ export default function FeatureSection({
   title,
   recipes,
 }: Readonly<FeatureSectionModel>) {
-  const chunked = splitRecipesInChunks(recipes);
+  const chunked = recipes?.length > 0 ? splitRecipesInChunks(recipes) : [];
 
   return (
     <CarouselRoot title={title}>
       {chunked.map((group, index) => (
         <CarouselSlide key={index}>
-          <CarouselContent className="grid grid-cols-2 gap-4 p-5">
+          <CarouselContent className="grid grid-cols-2 gap-10 p-5 mx-20">
             {group.map((recipe) => (
               <CardRecipe key={recipe.id} recipe={recipe} />
             ))}
