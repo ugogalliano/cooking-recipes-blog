@@ -15,7 +15,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
 fi
 
 # Crea un file .env se non esiste
-if [ ! -f ./@food-cms-strapi/.env ]; then
+if [ ! -f ./food-cms-strapi/.env ]; then
   echo "❌ Errore: Devi creare il file .env" >&2
   exit 1
 fi
