@@ -76,6 +76,7 @@
   --sidebar-accent-foreground: #262522;
   --sidebar-border: #c4e5fc;
   --sidebar-ring: #9fdc26;
+  --card-recipe-detail: #f0ebe1;
 }
 
 @layer base {

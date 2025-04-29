@@ -11,7 +11,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useIsVisible } from "@/hook/useIsVisible.hook";
-import { useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -23,8 +24,16 @@ export default function CardRecipe({
 }: Readonly<RecipeCardProps>) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isVisible = useIsVisible(cardRef);
+  const router = useRouter();
 
   const isVisibleTab = useMemo(() => (isVisible ? 0 : -1), [isVisible]);
+
+  const goToRecipe = useCallback(
+    (id: string) => {
+      router.push(`/recipe/${id}`);
+    },
+    [router]
+  );
 
   return (
     <Card
@@ -37,6 +46,7 @@ export default function CardRecipe({
           src={`${process.env.NEXT_PUBLIC_CMS_STRAPI_URL}${recipe.image.url}`}
           alt={recipe.title}
           fill
+          sizes="auto"
         />
       </div>
       <div className="border-2  border-t-0 pt-5 pb-5 border-gray-300 rounded-b-2xl">
@@ -58,7 +68,11 @@ export default function CardRecipe({
                 {recipe.time} min - {recipe.difficulty} - {recipe.serves}{" "}
               </span>
             </div>
-            <Button variant={"ghost"} tabIndex={isVisibleTab}>
+            <Button
+              variant={"ghost"}
+              onClick={() => goToRecipe(recipe.documentId)}
+              tabIndex={isVisibleTab}
+            >
               View Recipe
             </Button>
           </div>

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-04-22T08:02:40.108Z"
+    "x-generation-date": "2025-04-29T13:00:56.098Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -4605,6 +4605,18 @@
                     }
                   }
                 },
+                "ingredients": {
+                  "type": "string"
+                },
+                "equipmentForPreparation": {
+                  "type": "string"
+                },
+                "nutrionValue": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "string"
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -5893,6 +5905,18 @@
                     }
                   }
                 },
+                "ingredients": {
+                  "type": "string"
+                },
+                "equipmentForPreparation": {
+                  "type": "string"
+                },
+                "nutrionValue": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "string"
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -7084,6 +7108,18 @@
                 ],
                 "example": "string or id"
               },
+              "ingredients": {
+                "type": "string"
+              },
+              "equipmentForPreparation": {
+                "type": "string"
+              },
+              "nutrionValue": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               },
@@ -7953,6 +7989,18 @@
                         }
                       }
                     },
+                    "ingredients": {
+                      "type": "string"
+                    },
+                    "equipmentForPreparation": {
+                      "type": "string"
+                    },
+                    "nutrionValue": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "string"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -8059,6 +8107,18 @@
                 }
               }
             }
+          },
+          "ingredients": {
+            "type": "string"
+          },
+          "equipmentForPreparation": {
+            "type": "string"
+          },
+          "nutrionValue": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -8880,6 +8940,18 @@
                             "type": "string"
                           }
                         }
+                      },
+                      "ingredients": {
+                        "type": "string"
+                      },
+                      "equipmentForPreparation": {
+                        "type": "string"
+                      },
+                      "nutrionValue": {
+                        "type": "string"
+                      },
+                      "details": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
