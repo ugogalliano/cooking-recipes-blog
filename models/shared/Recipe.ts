@@ -13,4 +13,8 @@ export interface Recipe {
   time: string;
   difficulty: Difficulty;
   image: Image;
+  details?: string;
+  ingredients?: string;
+  nutrionValue?: string;
+  equipmentForPreparation?: string;
 }
