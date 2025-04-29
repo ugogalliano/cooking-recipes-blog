@@ -47,6 +47,18 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "recipes"
+    },
+    "ingredients": {
+      "type": "richtext"
+    },
+    "equipmentForPreparation": {
+      "type": "richtext"
+    },
+    "nutrionValue": {
+      "type": "richtext"
+    },
+    "details": {
+      "type": "richtext"
     }
   }
 }
