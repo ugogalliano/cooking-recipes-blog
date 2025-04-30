@@ -1,6 +1,5 @@
 import { Recipe } from "@/models/shared/Recipe";
-import ReactMarkdown from "react-markdown";
-import { Components } from "react-markdown/lib/ast-to-react";
+import ReactMarkdown, { Components } from "react-markdown";
 
 const BLOG_RECIPE_MARKDOWN = {
   h2: ({ children, ...props }) => (
