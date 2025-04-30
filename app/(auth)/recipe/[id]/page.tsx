@@ -12,11 +12,10 @@ export default async function RecipeDetail({
   const token = await getCookieAuthorizationToken();
   const recipe = await getRecipeDetail(token, id);
 
-  console.log(recipe);
   return (
-    <>
+    <div className="mx-auto max-w-[1250px]">
       <HeroRecipe {...recipe} />
       <BlogRecipe {...recipe} />
-    </>
+    </div>
   );
 }

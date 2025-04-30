@@ -52,7 +52,7 @@ export default function CardRecipe({
       <div className="border-2  border-t-0 pt-5 pb-5 border-gray-300 rounded-b-2xl">
         {/* Header: Titolo */}
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-start">
+          <CardTitle className="md:text-2xl  text-lg font-bold text-start">
             {recipe.title}
           </CardTitle>
           <CardDescription className=" text-start">

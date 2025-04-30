@@ -26,7 +26,7 @@ export default function CardRecipeSection({
   return (
     <>
       <div className="flex justify-center ">
-        <ul className="grid md:grid-cols-6 sm:grid-cols-1 gap-10">
+        <ul className="grid md:grid-cols-6 grid-cols-2 gap-10">
           {categories.map((category) => (
             <li className="mx-auto" key={category.id}>
               <Category {...category} isLoading={isLoading} />

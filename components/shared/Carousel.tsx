@@ -60,7 +60,9 @@ function CarouselRoot({ children, title }: Readonly<CarouselRootProps>) {
       aria-roledescription="carousel"
     >
       <div className="flex justify-between items-center">
-        <h2 className={"text-5xl font-bold p-4 w-full text-gray-800"}>
+        <h2
+          className={"md:text-5xl text-2xl font-bold p-4 w-full text-gray-800"}
+        >
           {title}
         </h2>
 
