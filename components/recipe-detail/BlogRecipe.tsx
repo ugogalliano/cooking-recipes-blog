@@ -26,7 +26,7 @@ export default function BlogRecipe({
   details,
 }: Readonly<Recipe>) {
   return (
-    <div className="flex mx-10 mt-10 ">
+    <div className="flex mt-10 ">
       <div className="flex-1/2 ml-10">
         <ReactMarkdown components={BLOG_RECIPE_MARKDOWN}>
           {details ?? ""}

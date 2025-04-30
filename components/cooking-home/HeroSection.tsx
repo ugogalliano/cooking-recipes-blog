@@ -23,17 +23,17 @@ export default function HeroSection({
 
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-opacity-50">
         <h1
-          className="text-4xl md:text-6xl font-bold text-center mb-4"
+          className="text-lg md:text-6xl sm:text-4xl  font-bold text-center md:mb-4 mb-0"
           aria-live="polite"
         >
           {title}
         </h1>
 
-        <p className="text-xl md:text-2xl text-center mb-6 px-4 max-w-xl">
+        <p className="text-xs md:text-lg sm:text-2xl text-center md:mb-6  mb-1 px-4 max-w-xl">
           {description}
         </p>
 
-        <Button variant={"secondary"} size={"lg"}>
+        <Button variant={"secondary"} size={"default"}>
           {buttonText}
         </Button>
       </div>
