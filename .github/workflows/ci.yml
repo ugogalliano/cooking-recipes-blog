@@ -1,11 +1,11 @@
-name: CI - Lint, Build and Auto-Merge
+name: CI - Lint and Build
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  build-and-lint:
+  lint-and-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,14 +26,3 @@ jobs:
 
       - name: Run Build
         run: npm run build
-
-  enable-auto-merge:
-    needs: build-and-lint
-    runs-on: ubuntu-latest
-    if: success()
-    steps:
-      - name: Enable auto-merge
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          merge-method: squash
