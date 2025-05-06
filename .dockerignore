@@ -1,0 +1,6 @@
+# Cartelle temporanee
+node_modules/
+.tmp/
+.cache/
+build/
+dist/

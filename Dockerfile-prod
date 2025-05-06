@@ -1,0 +1,37 @@
+# Step 1: Use a base image with Node.js
+FROM node:18-alpine AS builder
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json first (to leverage Docker cache)
+COPY package.json package-lock.json ./
+
+# Install dependencies for building (this includes devDependencies)
+RUN npm install
+
+# Copy the rest of the application (e.g., your source code)
+COPY . .
+
+# Build the application (tailwind will generate CSS here)
+RUN npm run build
+
+# Step 2: Production image
+FROM node:18-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy only the built files and the node_modules from the builder stage
+COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/.next /app/.next
+COPY --from=builder /app/public /app/public
+
+# Copy the production-ready package.json (without devDependencies)
+COPY package.json ./
+
+# Expose the application port
+EXPOSE 3000
+
+# Start the application in production mode
+CMD ["npm", "start"]
