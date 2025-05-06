@@ -1,0 +1,23 @@
+FROM node:18-alpine
+
+RUN apk add --no-cache build-base vips-dev git python3
+
+WORKDIR /opt/app
+
+COPY package.json package-lock.json ./
+
+RUN npm install --production
+
+COPY . .
+
+RUN npm run build
+
+RUN chown -R 777 /opt/app/public
+
+RUN npm cache clean --force
+
+ENV NODE_ENV=production
+
+EXPOSE 1337
+
+CMD ["sh", "-c", "if [ \"$INITIALIZE_DB\" = \"true\" ]; then npm run strapi import -- -f \"$STRAPI_IMPORT_FILE\" --key \"$STRAPI_IMPORT_KEY\" --force; fi && npm start"]

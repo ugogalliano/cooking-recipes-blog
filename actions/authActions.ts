@@ -47,6 +47,7 @@ export async function login(
     return actionsResponse;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
+    console.log(error);
     actionsResponse.success = false;
     actionsResponse.message = "An unexpected error occurred.";
     return actionsResponse;
